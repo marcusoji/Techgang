@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath> // for std::exp and std::pow
+
+// Function to compute the nth order derivative of e^(kx)
+double nth_order_derivative(double k, double x, int n) {
+    // The nth derivative of e^(kx) is (k^n) * e^(kx)
+    return std::pow(k, n) * std::exp(k * x);
+}
+
+int main() {
+    double k, x;
+    int n;
+
+    // Input values for k, x, and n
+    std::cout << "Enter a value for k: ";
+    std::cin >> k;
+    std::cout << "Enter the value for x: ";
+    std::cin >> x;
+    std::cout << "Enter the order of the derivative (n): ";
+    std::cin >> n;
+
+    // Ensure n is non-negative
+    if (n < 0) {
+        std::cout << "Error: The order of the derivative (n) must be non-negative." << std::endl;
+        return 1; // Exit with an error code
+    }
+
+    // Compute the nth order derivative
+    double result = nth_order_derivative(k, x, n);
+
+    // Output the result
+    std::cout << "The " << n << "th order derivative of e^(" << k << "x) at x = " << x 
+              << " is: " << result << std::endl;
+
+    return 0;
+}
